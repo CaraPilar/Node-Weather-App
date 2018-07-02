@@ -12,10 +12,19 @@
     <div class="container">
       <h1>Check the Weather</h1>
       <fieldset>
-        <form action="/" method="post">
-          <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
-          <input type="submit" class="ghost-button" value="Get Weather">
+        <form class ="form" action="/" method="post">
+          <div class="form-group"><input name="city" type="text" class="form-control" placeholder="Enter a City" required></div>
+          <div class="form-group"><input type="submit" class="form-control" value="Get Weather"></div>
         </form>
+
+        <% if(weather != null){ %>
+          <p><%= weather %></p>
+       <% } %>
+
+       <% if(error != null){ %>
+        <p><%= error %></p>
+     <% } %>
+        
       </fieldset>
     </div>
   </body>

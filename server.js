@@ -16,28 +16,34 @@ app.set('view engine', 'ejs'); //sets up template engine
 
 app.get('/', function (req, res) {
     // res.send('Hello World!');
-    res.render('index');
+    res.render('index', {weather: null, error:null});
 });
-
 
 app.post('/', function (req,res) { //pass data from client to server
     let city = req.body.city;
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-    res.render('index');
-    //console.log(req.body.city); 
 
-    request(url, function(err, response,body){ //returns callback with err, response, body
+    request(url, function(err,response,body){ //returns callback with err, response, body
         if(err) {
             res.render('index', {weather:null, error: 'Error: please try again'});
         } else {
             let weather = JSON.parse(body);
-            console.log(weather);
+            if(weather.main !== undefined) {
+                let weatherTemp = weather.main.temp;
+                res.render('index', 
+                {
+                    weather: weatherTemp, 
+                    error:null
+                });
+            } else {
+                res.render('index', {weather:null, error: 'Error: please try again'});
+            }
+            
+            
         }
     });
 });
 
-
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(4000, function () {
+  console.log('Example app listening on port 4000!');
 });
