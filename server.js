@@ -30,6 +30,7 @@ app.post('/', function (req,res) { //pass data from client to server
             let weather = JSON.parse(body);
             if(weather.main !== undefined) {
                 let weatherTemp = weather.main.temp;
+                console.log(weatherTemp);
                 res.render('index', 
                 {
                     weather: weatherTemp, 
