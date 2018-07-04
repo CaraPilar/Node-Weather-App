@@ -14,9 +14,9 @@ Based on tutorial: https://codeburst.io/build-a-weather-website-in-30-minutes-wi
 - Heroku for deployment
 
 ## To-Do List
-[] Apply Basic Styles
-[] Fetch results without page reload (Ajax request)
-[] Display current time along with temperature
-[] Add CSS animation based on the temperature that is returned
-[] Add CSS animation based on current time
-[] Deploy to Heroku
+- [ ] Apply Basic Styles
+- [ ] Fetch results without page reload (Ajax request)
+- [ ] Display current time along with temperature
+- [ ] Add CSS animation based on the temperature that is returned
+- [ ] Add CSS animation based on current time
+- [ ] Deploy to Heroku
