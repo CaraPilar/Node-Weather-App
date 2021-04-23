@@ -42,6 +42,6 @@ app.post('/', function (req,res) { //pass data from client to server
     });
 });
 
-app.listen(4000, function () {
-  console.log('Example app listening on port 4000!');
+app.listen(process.env.PORT || 4000, function () {
+  console.log(`Server listening on port ${process.env.PORT}!`);
 });
