@@ -6,7 +6,6 @@ require('dotenv').config();
 
 let apiKey = process.env.APIKEY;
 
-
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
     extended: true
@@ -16,7 +15,7 @@ app.set('view engine', 'ejs'); //sets up template engine
 
 app.get('/', function (req, res) {
     // res.send('Hello World!');
-    res.render('index', {weather: null, error:null});
+    res.render('index', {weather: null, error: null});
 });
 
 app.post('/', function (req,res) { //pass data from client to server
@@ -25,21 +24,21 @@ app.post('/', function (req,res) { //pass data from client to server
 
     request(url, function(err,response,body){ //returns callback with err, response, body
         if(err) {
-            res.render('index', {weather:null, error: 'Error: please try again'});
+            res.render('index', {weather_temp:null, weather: null,error: 'Error: please try again'});
         } else {
             let weather = JSON.parse(body);
+            // console.log(weather);
             if(weather.main !== undefined) {
                 let weatherTemp = weather.main.temp;
                 res.render('index', 
                 {
-                    weather: weatherTemp, 
+                    weather_temp: weatherTemp, 
+                    weather: weather,
                     error:null
                 });
             } else {
-                res.render('index', {weather:null, error: 'Error: please try again'});
-            }
-            
-            
+                res.render('index', {weather_temp:null, weather: null, error: 'Error: please try again'});
+            }       
         }
     });
 });
