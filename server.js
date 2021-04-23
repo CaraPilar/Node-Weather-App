@@ -14,8 +14,7 @@ app.set('view engine', 'ejs'); //sets up template engine
 
 
 app.get('/', function (req, res) {
-    // res.send('Hello World!');
-    res.render('index', {weather: null, error: null});
+    res.render('index', {weather_temp:null, weather: null, error: null});
 });
 
 app.post('/', function (req,res) { //pass data from client to server
